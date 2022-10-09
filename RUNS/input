@@ -1,0 +1,7 @@
+'m08c.mdl'	! input file for parent star 1
+'m06c.mdl'	! input file for parent star 2
+0.25		! periastron separation (in units of R_1 + R_2)
+'product.mdl'	! output file for collision product
+0		! approx. number of shells in collision product (0=automatic)
+14		! number of chemical species to follow (0 to 14 for .mdl files)
+2		! verbosity
