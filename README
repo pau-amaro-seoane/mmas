@@ -1,0 +1,379 @@
+MAKE ME A STAR
+Version 1.6
+9 Oct 2022
+
+This code was developed by James Lombardi and Jessica Sawyer Warren, with
+contributions to the project from Frederic Rasio, Alison Sills and Aaron
+Warren.  This code is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the Free
+Software Foundation; either version 2 of the License, or (at your option) any
+later version.
+
+If you use this package for work that is to be published, we ask that you
+inform us, acknowledge use of the package, and cite the following articles:
+
+(1) "Collisions of Main-Sequence Stars and the Formation of Blue
+    Stragglers in Globular Clusters."  Lombardi, Rasio, and Shapiro 1996,
+    Astrophysical Journal, 468, 797.
+ 
+(2) "Stellar Collisions and the Interior Structure of Blue Stragglers."
+    Lombardi, Warren, Rasio, Sills, and Warren 2002, Astrophysical Journal,
+    568, 939.
+    
+(3) "Modelling Collision Products of Triple-Star Mergers." Lombardi,
+    Thrall, Deneva, Fleming, and Grabowski 2003, MNRAS, Volume 345, 
+    Issue 3, pp. 762-780.
+
+References and bibtex:
+---------------------
+
+(1) https://ui.adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=
+
+@ARTICLE{1996ApJ...468..797L,
+       author = {{Lombardi}, James C., Jr. and {Rasio}, Frederic A. and {Shapiro}, Stuart L.},
+        title = "{Collisions of Main-Sequence Stars and the Formation of Blue Stragglers in Globular Clusters}",
+      journal = {\apj},
+     keywords = {STARS: BLUE STRAGGLERS, HYDRODYNAMICS, STARS: EVOLUTION, STARS: INTERIORS, STARS: ROTATION, Astrophysics},
+         year = 1996,
+        month = sep,
+       volume = {468},
+        pages = {797},
+          doi = {10.1086/177736},
+archivePrefix = {arXiv},
+       eprint = {astro-ph/9511074},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/1996ApJ...468..797L},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+(2) https://ui.adsabs.harvard.edu/abs/2002ApJ...568..939L
+
+@ARTICLE{2002ApJ...568..939L,
+       author = {{Lombardi}, James C., Jr. and {Warren}, Jessica S. and {Rasio}, Frederic A. and {Sills}, Alison and {Warren}, Aaron R.},
+        title = "{Stellar Collisions and the Interior Structure of Blue Stragglers}",
+      journal = {\apj},
+     keywords = {Stars: Blue Stragglers, Galaxy: Globular Clusters: General, Hydrodynamics, Stars: Evolution, Stars: Interiors, Stellar Dynamics, Astrophysics},
+         year = 2002,
+        month = apr,
+       volume = {568},
+       number = {2},
+        pages = {939-953},
+          doi = {10.1086/339060},
+archivePrefix = {arXiv},
+       eprint = {astro-ph/0107388},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2002ApJ...568..939L},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+(3) https://ui.adsabs.harvard.edu/abs/2003MNRAS.345..762L/abstract
+
+@ARTICLE{2003MNRAS.345..762L,
+       author = {{Lombardi}, J.~C. and {Thrall}, A.~P. and {Deneva}, J.~S. and {Fleming}, S.~W. and {Grabowski}, P.~E.},
+        title = "{Modelling collision products of triple-star mergers}",
+      journal = {\mnras},
+     keywords = {hydrodynamics, blue stragglers, stars: chemically peculiar, stars: interiors, globular clusters: general, galaxies: star clusters, Astrophysics},
+         year = 2003,
+        month = nov,
+       volume = {345},
+       number = {3},
+        pages = {762-780},
+          doi = {10.1046/j.1365-8711.2003.06999.x},
+archivePrefix = {arXiv},
+       eprint = {astro-ph/0307061},
+ primaryClass = {astro-ph},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2003MNRAS.345..762L},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+
+Please direct correspondence regarding this software package to James Lombardi
+and Pau Amaro Seoane (jalombar@allegheny.edu, amaro@riseup.net).
+
+
+MOTIVATION AND BRIEF DESCRIPTION OF PROJECT:
+===========================================
+
+Collisions of main sequence stars occur frequently in dense star clusters. In
+open and globular clusters, these collisions produce collision products that
+may be observed as blue stragglers. Detailed theoretical models of this process
+require lengthy hydrodynamic computations in three dimensions. However, a less
+computationally expensive approach, which we present here, is to approximate
+the merger process (including shock heating, hydrodynamic mixing, mass
+ejection, and angular momentum transfer) with simple algorithms based on
+conservation laws and a basic qualitative understanding of the hydrodynamics.
+These algorithms have been fine tuned by comparing them to the results of our
+previous hydrodynamic simulations.  In particular, the thermodynamic and
+chemical composition profiles of our simple models agree very well with those
+from recent SPH (smoothed particle hydrodynamics) calculations of stellar
+collisions, and the subsequent stellar evolution of our simple models also
+matches closely that of the more accurate hydrodynamic models.  Our algorithms
+have been implemented in this easy-to-use software package, which we are making
+publicly available.  This software could be used in combination with realistic
+dynamical simulations of star cluster dynamics that must take into account
+stellar collisions.
+
+In this tar.gz you will find the following directories and files:
+
+RUNS:
+clean.sh    input        m04.mdl      m06.mdl      m06c.mdl     m08.mdl      m08c.mdl     meshspacing  run.sh
+
+src:
+driver.f        fig25.f         makefile        makemeastar.f   params.h        table2.f
+
+stellar_models:
+m04.mdl   m06.mdl   m06c.mdl  m08.mdl   m08c.mdl
+
+tools:
+meshspacing   sample_input
+
+Description:
+------------
+
+makemeastar.f : contains the subroutine makemeastar that determines the
+		        profiles of a collision product.
+
+params.h	: a header file needed by many of the routines in makemeastar.f
+
+driver.f	: a sample driver program that demonstrates how to call
+     		  makemeastar.  When including this software package into your
+	    	  particular application, you will probably find it useful
+		      to look in driver.f to see the syntax for calling the
+		      subroutine makemeastar.
+
+makefile	: a sample makefile that compiles and links one of the
+	          drivers and makemeastar
+
+m0*.mdl		: sample input data files that model the profiles in
+    		  Population II main sequence parent stars of 0.4, 0.6, and 0.8
+        	  solar masses. The files m04.mdl, m06.mdl, and m08.mdl 
+        	  were derived immediately from the Yale Rotating Evolution
+        	  Code, while the file m06c.mdl is a 0.6 solar mass model
+        	  with the structure profile from the end of an SPH
+        	  relaxation run.  Data in these files are in cgs units:
+
+		  Column 1 = Enclosed mass m 
+		  Column 2 = Radius at this m
+		  Column 3 = Pressure at this m
+		  Column 4 = Density at this m
+		  Columns 5 through 18 = the fraction chemical abundances, by
+		  mass, for H, metals, He3, C12, C13, N14, N15, O16, O17, O18,
+		  H2, Li6, Li7, and Be9, in that order.
+
+sample_input	: sample text that can be fed to driver.f
+
+meshspacing	: an input data file to help control the spacing of shells in
+     		  the collision product
+
+fig25.f		: a sample driver program that demonstrates how to generate the
+	    	  triple-star merger data for Fig. 25 of the 2003 MNRAS paper.
+		      This driver is not as chatty or self-explanatory as driver.f,
+		      but it works.
+
+table2.f	: a sample driver program that demonstrates how to generate the
+		      triple-star merger MMAS data for table 2 of the 2003 MNRAS
+		      paper.  This driver also makes files used to make many of the
+	          figures in that paper.  This driver is not at all efficient
+		      (it repeats calculations), nor is it as chatty or
+		      self-explanatory as driver.f, but it works.
+
+
+GETTING STARTED:
+================
+
+To try out the sample driver program and input files included with this
+package, complete the following steps.
+
+1. Change into the directory containing the source code.
+
+2. To compile the sample driver program meastar with the makemeastar package,
+   choose your fortran compiler and type at the command prompt:
+
+	$ make -f makefile  (if linux)
+    $ gmake -f makefile (if OpenBSD)
+
+3. To execute the resulting executable type,
+
+	./meastar
+
+and then follow the instructions.  For an even faster start, instead try
+
+	./meastar < sample_input
+
+or simply run run.sh in the RUN directory.
+
+
+
+
+PAST AND CURRENT VERSIONS OF CODE:
+==================================
+Version 1.6 (released 7/2/03):
+  --- a Fehlberg fourth-fifth order Runge-Kutta method is used to improve the
+	structure integration, both in speed and in accuracy.
+  --- in params.h, the fitted parameter c_3 has its default value now set at
+	-1.0 (instead of -1.1).  The change tends to distribute shock heating
+	slightly more uniformly thoughout the fluid.  This has little effect
+	on the resulting composition profiles of the collision products, but
+	their structure profiles are even better (that is, closer to SPH
+	results) than before.
+  --- this version of the code was used to generate the simple remnant models
+	presented in the post-referee version (but the original astro-ph
+	version) of "Modelling Collision Products of Triple-Star Mergers" by
+	Lombardi, Thrall, Deneva, Fleming, and Grabowski (submitted to MNRAS,
+	2003).
+
+Version 1.5 (released 4/1/03):
+  --- in order to make the collision product models more palatable to a stellar
+	evolution code, a mesh spacing curve (controlled by the file
+	"meshspacing") is employed to ensure that the shells are finely spaced
+	in both the core and the outer layers of the collision product.  One
+	positive side-effect is that the outermost radius of the collision
+	product is even more reliable than in previous versions of the code.
+  --- mixing near the surface of the collision product is treated more
+	carefully, yielding more accurate profiles of elements
+	with steep abundance gradients (such as lithium and beryllium
+	in our scenarios)
+  --- this version of the code was used to generate the simple remnant models
+	presented in the original (pre-refereed) version of "Modelling
+	Collision Products of Triple-Star Mergers" by Lombardi, Thrall, Deneva,
+	Fleming, and Grabowski (submitted to MNRAS, 2003).
+
+Version 1.4 (released 8/12/02):
+  --- the more massive star can now be be entered second
+
+Version 1.3 (released 8/7/02):
+  --- more accurate calculation of the radius of the last shell
+	(thanks to Onno Pols and Peter Teuben for comments leading to this)
+  --- more shells calculated in the outermost layers of the collision product
+  --- parent star information passed to makemeastar are now arrays (instead of
+	filenames)
+  --- this version of the code is being used in version 0.2 of TRILOGY, a code
+	that simulates the collision of two stars, including the orbital
+	trajectories, merger, and evolution of the merger product (see
+	http://faculty.vassar.edu/lombardi/trilogy)
+
+Version 1.2 (released 11/1/01):
+  --- tweaked the constants const1 through const10
+  --- now use the 50% and 86% enclosed mass radii in mass loss calculation
+  --- chose a better form for specific angular momentum profile
+  --- introduced the logical flags studymassloss and makeshockfile which
+         control the generation of additional output files useful for studying
+         mass loss and shock heating distribution, respectively
+  --- this version of the code was used to generate the simple remnant models
+	 presented in "Stellar Collisions and the Interior Structure of Blue
+	 Stragglers" by Lombardi, Sawyer, Rasio, Sills, and Warren (ApJ, 2002).
+
+Version 1.1 (released 7/19/01):
+  --- tried to make the code more robust and able to examine extreme cases
+  --- the code is somewhat more user-friendly
+
+Beta Version 1.1:
+  --- the code is now a subroutine, rather than a program
+  --- a verbosity flag allows control over the amount of output sent to the
+	 screen (verbosity=0 for a silent code, verbosity=1 for limited
+	 output, verbosity=2 for detailed output)
+  --- the code is somewhat more user-friendly
+
+COMMENTS:
+
+The code has been developed only for parabolic collisions (zero orbital
+energy) and an ideal gas equation of state, but with the intent of soon
+generalizing.
+
+For rotating products, the pressure, density, and radius profiles
+returned by the routine are obtained by integrating the equation of
+hydrostatic equilibrium for a *non*-rotating star.  The entropic variable A
+(stored internally in makemeastar) and specific angular momentum j
+profiles, however, are accurate and can be used to obtain a more
+complete rotating model with some other equilibrium-finding approach
+(for example, see Endal and Sophia 1976, ApJ, 210, 184).
+
+Should you improve the code, please consider telling us what you've done!  Our
+hope is that the software package will continue to evolve based on feedback
+from users.
+
+A brief description of the variables used follows, in case you do want to
+modify the code.
+
+
+IMPORTANT VARIABLES (and what they mean)
+
+PARAMS.H:
+NROWS= large number bigger than # rows in any parent star data file
+Msun= mass of sun in cgs units
+Rsun= radius of sun in cgs units
+
+subroutine makemeastar:
+K= index which indicates which parent star you are calculating data for
+C= index which indicates which chemical you are using
+Jpmax(K)= # of last row in parent star K's data file
+Mp(I,K)= mass enclosed of parent star K at row I
+Ap(I,K)= entropy of parent K at the enclosed mass Mp(I,K)
+Dp(I,K)= density of parent K at the enclosed mass Mp(I,K)
+Rp(I,K)= radius of parent K at the enclosed mass Mp(I,K)
+Pp(I,K)= pressure of parent K at the enclosed mass Mp(I,K)
+ELp(I,C,K)= chemical composition abundance (by mass) of element C
+	in parent star K at the enclosed mass Mp(I,K)
+NEWINT= intercept which minimizes delta energy
+INTlow= lower limit of INTERCEPT
+INThigh= upper limit of INTERCEPT
+W= total energy of both parent stars
+
+subroutine ENERGY:
+STAR= K value for parent stars, or N+1 for the collision product
+Ei= internal energy
+Eg= gravitational energy
+delM= delta mass
+TotE(K)= total energy of star K
+TotErem= total energy of collision product
+
+subroutine SHOCK:
+As(I,K)= shocked entropy for parent star K
+INTERCEPT= the intercept of the linear function Log(A-Ainit) vs. Log(P_init)
+	(for star 1), with slope const3=-1.1
+INTERCEPT2= intercept of star 2
+
+subroutine LOSEMASS:
+Pmax(K)= row of last kept mass in star K
+MLoseTotal= total mass loss from system
+MassLoss= total mass loss from system (more general than MLoseTotal)
+MLsfrac= fraction of mass lost from system
+
+subroutine MIX:
+dM(I)= difference between mass shells I+1 and I-1
+dAdM(I)= difference in entropy over dM
+F(J,I)= distribution function by which we mix (the second term is important
+	only near the center, and the third term is important only near the
+	surface)
+DENOM(I)= sum over J of F(J,I)*dM(J) which then becomes sum over I of
+	dM(I)/[F(J,I)*dM(J)]
+CONTRIB= sum of chemical abundance times F(I,L) times new DENOM(I) - it is the
+	contribution of chemical C from bin I to bin L
+ELm(L,C,K)= new value of chemical C at row L
+ELptot= total mass of chemicals before mixing
+ELmtot= total mass of chemicals after mixing
+
+subroutine SORT:
+Armax= maximum value of A in collision product
+Jr= row in product data
+Jrmax= final row in product data
+Ar(Jr)= A of product
+Mr(Jr)= mass of product
+ELr(Jr,C)= element C of product
+dAsdMp(K)= change in As over change in Mp for star K
+dArp(K)= change in As for star K
+MofAr= weighted average of M for product
+Chem(C,K)= weighted average of element C in star K for product
+dAr= change in A that is added to the previous value of Ar to get a new value
+
+subroutine PROFILE:
+Pcntr= central pressure
+Pclow= lower limit to central pressure
+Pchigh= upper limit to central pressure
+P(Jr)= pressure of product
+D(Jr)= density of product
+R(Jr)= radius of product
+Pctry= a guess at the central pressure
+Rup= upper limit to radius at row Jr
+RJr= radius at row Jr which is to be found with the function "zeroin"
+PJr= pressure as a function of RJr
