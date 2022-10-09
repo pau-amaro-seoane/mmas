@@ -150,7 +150,15 @@ m0*.mdl		: sample input data files that model the profiles in
         	  were derived immediately from the Yale Rotating Evolution
         	  Code, while the file m06c.mdl is a 0.6 solar mass model
         	  with the structure profile from the end of an SPH
-        	  relaxation run.  Data in these files are in cgs units:
+        	  relaxation run.  
+
+              Models without a "c" file comes directly from the stellar evolution code YREC.
+              Models with "c" come from a relaxed SPH model of the same star.  Hence, if you
+              are comparing against hydro results, it might make sense to use the "c" models.
+              Otherwise, it makes more sense to use the "non-c"  models since there is no
+              reason to have SPH be part of the conversation.
+
+          Data in these files are in cgs units:
 
 		  Column 1 = Enclosed mass m 
 		  Column 2 = Radius at this m
